@@ -1,0 +1,80 @@
+
+<!DOCTYPE/>
+<title>Evaluation</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body bgcolor="#272727">
+
+<div id="wrap">
+
+	<div id="topnavbar">
+
+		<div class="topnavbarleft">
+		</div>
+
+		<div class="topnavbarright">
+<div class="toplamfilm"></div>		</div>
+
+	</div>
+<br><br>
+<div id="navbarborder">
+	<div id="navbar">
+		<div id="navbarleft">
+			<ul id="nav">
+<li id="menu-item-161" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-161"><a href="index.html">HOME PAGE</a></li>
+<li id="menu-item-152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-152"><a href="connexion.html">CONNEXION</a></li>
+<li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="player.html">PLAYER</a></li>
+		</div>
+	</div>
+</div>
+
+<br><br>
+<div class="clear"></div>  
+<div id="content">
+	<div class="filmcontent">
+
+	<video id="Video1" >
+	     <source src="http://videos.hd-trailers.net/BatmanvSuperman_TLR-1_5.1-480p-HDTN.mp4" type="video/mp4" />
+	</video>
+
+		<div id="buttonbar">
+		    <button id="restart" onclick="restart();">[]</button> 
+		    <button id="rew" onclick="skip(-)">&lt;&lt;</button>
+		    <button id="play" onclick="vidplay()">&gt;</button>
+		    <button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>
+		</div>         
+
+    </div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    function vidplay() {
+       var video = document.getElementById("Video1");
+       var button = document.getElementById("play");
+       if (video.paused) {
+          video.play();
+          button.textContent = "||";
+       } else {
+          video.pause();
+          button.textContent = ">";
+       }
+    }
+
+    function restart() {
+        var video = document.getElementById("Video1");
+        video.currentTime = 0;
+    }
+
+    function skip(value) {
+        var video = document.getElementById("Video1");
+        video.currentTime += value;
+    }      
+</script>
+</html> 

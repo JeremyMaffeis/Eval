@@ -1,8 +1,13 @@
 
 <!DOCTYPE/>
 <title>Evaluation</title>
+<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
 </head>
 <body bgcolor="#272727">
 
@@ -25,37 +30,26 @@
 <li id="menu-item-161" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-161"><a href="index.html">HOME PAGE</a></li>
 <li id="menu-item-152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-152"><a href="connexion.html">CONNEXION</a></li>
 <li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="player.html">PLAYER</a></li>
+</ul>
 		</div>
 	</div>
 </div>
-
-<br><br>
-<div class="clear"></div>  
-<div id="content">
-	<div class="filmcontent">
-		<form action="connecte.html">
-	    <p>
-	        &nbsp;Nom d'utilisateur : <input type="text" id="username" />
-	        Mot de passe : <input type="password" id="password" />
-	        <input type="submit" id="submit" value="Se connecter !" />
-	    </p>
-	    </form>
-        <div id="resultat">
-    </div>
-	</div>
-</div>
-</body>
-<script type="text/javascript">
-	$.ajax({
-    url: "https://reqres.in/api/users",
-    type: "POST",
-    data: {
-        name: "John Smith",
-        movies: ["I Love You Man", "Role Models"]
-    },
-    success: function(response){
-        console.log(response);
-    }
-});
+<br>
+<div style="color: white" id="msg"></div>
+<div style="color: white" id="msg2"></div>
+<script type="text/babel">
+  ReactDOM.render(
+  <h1>Vous êtes maintenant connecté !</h1>,
+  document.getElementById('msg')
+);
 </script>
-</html>  
+<script type="text/babel">
+  ReactDOM.render(
+  <h5>(Ce message a été écrit grâce a React)</h5>,
+  document.getElementById('msg2')
+);
+</script>
+
+
+</body>
+</html> 

@@ -6,6 +6,7 @@
 <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
 </head>
 <body bgcolor="#272727">
 
@@ -28,15 +29,13 @@
 <li id="menu-item-161" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-161"><a href="index.html">HOME PAGE</a></li>
 <li id="menu-item-152" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-152"><a href="connexion.html">CONNEXION</a></li>
 <li id="menu-item-151" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-151"><a href="player.html">PLAYER</a></li>
+</ul>
 		</div>
 	</div>
 </div>
 
 <br><br>
-<div class="clear"></div>  
-<div id="content">
-	<div class="filmcontent">
-
+<div class="clear"></div> 
 	<video id="Video1" >
 	     <source src="http://videos.hd-trailers.net/BatmanvSuperman_TLR-1_5.1-480p-HDTN.mp4" type="video/mp4" />
 	</video>
@@ -46,11 +45,20 @@
 		    <button id="rew" onclick="skip(-)">&lt;&lt;</button>
 		    <button id="play" onclick="vidplay()">&gt;</button>
 		    <button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>
-		</div>         
+		</div>
+		<div>
+      <p style="color: white">
+        Mention J'aime : <span  id="value">0</span>
+        <button id="increment">J'aime</button>
+      </p>
+    </div>      
 
     </div>
 	</div>
 </div>
+</div>
+<br>
+
 
 </body>
 <script type="text/javascript">
@@ -77,4 +85,33 @@
         video.currentTime += value;
     }      
 </script>
+<script>
+	/*Mention J'aime en Redux*/
+      function counter(state, action) {
+        if (typeof state === 'undefined') {
+          return 0
+        }
+        switch (action.type) {
+          case 'INCREMENT':
+            return state + 1
+          case 'DECREMENT':
+            return state - 1
+          default:
+            return state
+        }
+      }
+      var store = Redux.createStore(counter)
+      var valueEl = document.getElementById('value')
+      function render() {
+        valueEl.innerHTML = store.getState().toString()
+      }
+      render()
+      store.subscribe(render)
+      document.getElementById('increment')
+        .addEventListener('click', function () {
+        	if (store.getState() == 0) {
+            store.dispatch({ type: 'INCREMENT' })
+          }
+        })
+    </script>
 </html> 
